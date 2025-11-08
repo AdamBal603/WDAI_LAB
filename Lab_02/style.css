@@ -1,0 +1,44 @@
+body {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    margin: 0;
+}
+h1, h2 {
+    margin: 0;
+    background-color: orange;
+    text-align: center;
+    width: 100%;
+}
+
+footer {
+    background-color: red;
+    text-align: left;
+    width: 100%;
+}
+.obrazek {
+    margin: 20px 20px 20px 20px;
+    width: 200px;
+    height: 200px;
+}
+.navbar {
+    background-color: brown;
+    width: 20%;
+    height: auto;
+    font-size: larger;
+}
+.main {
+    flex: 1;
+    display: flex;
+    width: 80%;
+    height: auto;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-around;
+    margin: 10px;
+    text-align: justify;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}

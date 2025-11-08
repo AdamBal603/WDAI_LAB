@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+        />
+        <title>Vtubers Lair - Kontakt</title>
+        <link
+        rel="stylesheet"
+        href="./style.css"
+        />
+    </head>
+    <body>
+        <h1>VTubers Lair - Kontakt</h1>
+        <nav>
+            <ul>
+                <li><a href="./index1.html">Home</a></li>
+                <li><a href="./index2.html">Kontakt</a></li>
+                <li><a href="./index3.html">Galeria</a></li>
+            </ul>
+        </nav>
+        <div class="main">
+            Napisz do mnie na maila vtlair@mail.com lub użyj formularza poniżej, aby wysłać wiadomość.
+            <div style="width:80%">
+                <form style="margin: 20px; align-content: center;">
+                    <label for="email">Twój adres email: </label>
+                    <input type="text" id="email" name="email" placeholder="example@mail.com" required>
+                    <label for="temat">Temat maila: </label>
+                    <select id="temat" name="temat" required>
+                        <option value="" selected disabled hidden>--Wybierz temat maila--</option>
+                        <option value="iamvtuber">Jestem Vtuberem</option>
+                        <option value="missingvtuber">Znam Vtubera, którego tu nie ma</option>
+                        <option value="other">Inne</option>
+                    </select><br>
+                    <label for="tresc">Treść maila:</label><br>
+                    <textarea id="tresc" name="tresc" style="width:100%; height:400px; resize:none"
+                    placeholder="Tutaj wpisz treść maila..." required></textarea><br>
+                    <label for="ocena">Możesz też ocenić tę stronę: </label>
+                    <label><input type="radio" name="ocena" value="1">1</label>
+                    <label><input type="radio" name="ocena" value="2">2</label>
+                    <label><input type="radio" name="ocena" value="3">3</label>
+                    <label><input type="radio" name="ocena" value="4">4</label>
+                    <label><input type="radio" name="ocena" value="5">5</label>
+                    <input type="submit">
+                </form>
+            </div>
+        </div>
+        <footer>
+            <p>Autor: Adam Balcerek</p>
+        </footer>
+    </body>
+</html>
