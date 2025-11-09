@@ -105,17 +105,47 @@ nav a:hover {
 }
 
 /* Obrazki w galerii */
-.obrazek, img {
-    background-color: #FFCF71;
-    color: #7B542F;
-    margin: 10px;
+.obrazek {
+    position: relative;
     width: 200px;
     height: 200px;
     border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
+    margin: 10px;
+    background-color: #FFCF71; /* tło zastępcze */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.obrazek img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.obrazek:hover img {
+    transform: scale(1.05);
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(123, 84, 47, 0.85); /* #7B542F z przezroczystością */
+    color: #FFCF71;
+    text-align: center;
+    padding: 8px 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
     font-weight: bold;
+    font-size: 0.95em;
+}
+
+.obrazek:hover .caption {
+    opacity: 1;
 }
 
 /* Tabela */
@@ -125,6 +155,14 @@ table, th, td {
     color: #FFCF71;
     margin: 10px;
     text-align: center;
+}
+
+th, td {
+    border: 1px solid #FFCF71;
+    padding: 10px 15px;
+    text-align: center;
+    vertical-align: middle;
+    color: #FFCF71;
 }
 
 th {
