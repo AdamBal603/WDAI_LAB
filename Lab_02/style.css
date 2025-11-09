@@ -1,32 +1,71 @@
+/* Paleta kolorów: #7B542F, #B6771D, #FF9D00, #FFCF71 */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
 body {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
     margin: 0;
-}
-h1, h2 {
-    margin: 0;
-    background-color: orange;
-    text-align: center;
-    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #7B542F;
+    color: #FFCF71;
 }
 
+/* Nagłówki */
+h1, h2 {
+    margin: 0;
+    background-color: #B6771D;
+    text-align: center;
+    width: 100%;
+    color: #FFCF71;
+    padding: 15px 0;
+    border-bottom: 3px solid #FF9D00;
+}
+
+/* Stopka */
 footer {
-    background-color: red;
+    background-color: #B6771D;
+    color: #FFCF71;
     text-align: left;
     width: 100%;
+    padding: 10px;
+    border-top: 2px solid #FF9D00;
 }
-.obrazek {
-    margin: 20px 20px 20px 20px;
-    width: 200px;
-    height: 200px;
-}
-.navbar {
-    background-color: brown;
+
+/* Nawigacja boczna */
+nav {
+    background-color: #B6771D;
     width: 20%;
     height: auto;
     font-size: larger;
+    color: #FFCF71;
 }
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    border-bottom: 1px solid #7B542F;
+}
+
+nav a {
+    display: block;
+    color: #FFCF71;
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav a:hover {
+    background-color: #FF9D00;
+    color: #7B542F;
+}
+
+/* Główna zawartość */
 .main {
     flex: 1;
     display: flex;
@@ -37,8 +76,60 @@ footer {
     justify-content: space-around;
     margin: 10px;
     text-align: justify;
+    background-color: #8C633A;
+    border-radius: 8px;
+    padding: 20px;
 }
+
+/* Obrazki w galerii */
+.obrazek, img {
+    background-color: #FFCF71;
+    color: #7B542F;
+    margin: 10px;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Tabela */
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid #FFCF71;
     border-collapse: collapse;
+    color: #FFCF71;
+}
+
+th {
+    background-color: #B6771D;
+}
+
+td {
+    background-color: #7B542F;
+}
+
+/* Formularz */
+input, select, textarea {
+    background-color: #FFCF71;
+    border: 1px solid #B6771D;
+    color: #7B542F;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px 0;
+}
+
+input[type="submit"] {
+    background-color: #FF9D00;
+    color: #7B542F;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #B6771D;
+    color: #FFCF71;
 }
