@@ -14,13 +14,26 @@
     </head>
     <body>
         <h1>VTubers Lair - Kontakt</h1>
-        <nav>
-            <ul>
-                <li><a href="./index1.html">Home</a></li>
-                <li><a href="./index2.html">Kontakt</a></li>
-                <li><a href="./index3.html">Galeria</a></li>
-            </ul>
-        </nav>
+        <div class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="./index1.html">Home</a></li>
+                    <li><a href="./index2.html">Kontakt</a></li>
+                    <li><a href="./index3.html">Galeria</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-info">
+                <h3>O stronie</h3>
+                <p>W taki sposób możesz się ze mną skontaktować. Wystarczy, że podasz maila, wybierzesz temat i napiszesz wiadomość. Możesz też wystawić ocenę.</p>
+            </div>
+            
+            <div class="sidebar-faq">
+                <h3>FAQ</h3>
+                <p>Obecnie nie ma żadnych pytań. Bądź pierwszą osobą, aby je zadać mailowo w zakładce <strong>Kontakt</strong></p>
+            </div>
+        </div>
+
         <div class="main">
             Napisz do mnie na maila vtlair@mail.com lub użyj formularza poniżej, aby wysłać wiadomość.
             <div style="width:80%">
@@ -31,7 +44,7 @@
                     <select id="temat" name="temat" required>
                         <option value="" selected disabled hidden>--Wybierz temat maila--</option>
                         <option value="iamvtuber">Jestem Vtuberem</option>
-                        <option value="missingvtuber">Znam Vtubera, którego tu nie ma</option>
+                        <option value="questions">Pytania</option>
                         <option value="other">Inne</option>
                     </select><br>
                     <label for="tresc">Treść maila:</label><br>

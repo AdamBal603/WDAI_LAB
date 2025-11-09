@@ -34,11 +34,34 @@ footer {
 }
 
 /* Nawigacja boczna */
-nav {
+.sidebar {
     background-color: #B6771D;
     width: 20%;
     height: auto;
     font-size: larger;
+    color: #FFCF71;
+}
+
+.sidebar-info, .sidebar-faq {
+    background-color: #8C633A;
+    border-radius: 8px;
+    margin: 15px 0;
+    padding: 10px;
+
+}
+
+.sidebar h3 {
+    color: #FF9D00;
+    border-bottom: 2px solid #FFCF71;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.sidebar p {
+    font-size: 0.9em;
+}
+
+.sidebar strong {
     color: #FFCF71;
 }
 
@@ -101,6 +124,7 @@ table, th, td {
     border-collapse: collapse;
     color: #FFCF71;
     margin: 10px;
+    text-align: center;
 }
 
 th {
