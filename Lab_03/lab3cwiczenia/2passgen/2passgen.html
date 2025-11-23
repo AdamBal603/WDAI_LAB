@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+        />
+        <title>Generator haseł</title>
+        <link
+        rel="stylesheet"
+        href="./style2.css"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <h2>Generator haseł</h2>
+            <form style="align-content: center;">
+                <div>
+                    <label for="minLen">Minimalna długość hasła: </label>
+                    <input type="text" id="minLen" required>
+                </div>
+                <div>
+                    <label for="maxLen">Maksymalna długość hasła: </label>
+                    <input type="text" id="maxLen" required>
+                </div>
+                <div>
+                    <label for="upperCase">Wielkie litery </label>
+                    <input type="checkbox" id="upperCase">
+                    <label for="specialChars">Znaki specjalne </label>
+                    <input type="checkbox" id="specialChars">
+                    <button id="genBtn" class="gen">Wygeneruj hasło</button>
+                </div>  
+            </form>
+        </div>
+        <script src="2passgen.js"></script>
+    </body>
+</html>

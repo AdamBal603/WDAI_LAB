@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+        />
+        <title>Lista produktów</title>
+        <link
+        rel="stylesheet"
+        href="./style3.css"
+        />
+    </head>
+<body>
+
+<h2>Lista produktów</h2>
+
+<div class="controls">
+    <input type="text" id="filterInput" placeholder="Filtruj produkty...">
+    <select id="sortSelect">
+        <option value="original">Oryginalna kolejność</option>
+        <option value="asc">Rosnąco (A–Z)</option>
+        <option value="desc">Malejąco (Z–A)</option>
+    </select>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Zdjęcie</th>
+            <th>Tytuł</th>
+            <th>Opis</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+</table>
+
+<script src="3products.js"></script>
+
+</body>
+</html>
