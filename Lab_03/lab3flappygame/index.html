@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+        />
+        <title>Flappy Bird</title>
+        <link
+        rel="stylesheet"
+        href="./style.css"
+        />
+    </head>
+    <body>
+        <div id="base"></div>
+        <img id="message" src="assets/UI/message.png" alt="message">
+        <div id="pipes"></div>
+        <div id="bird"></div>
+        <div id="score">0</div>
+        <div id="gameOverScreen" class="hidden">
+            <img src="assets/UI/gameover.png" id="gameOverImage">
+            <div id="gameOverPanel">
+                <p>Wynik: <span id="finalScore">0</span></p>
+                <button onclick="location.reload()">Restart</button>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
