@@ -28,20 +28,25 @@ function renderTable() {
 }
 
 // Filtrowanie
-document.getElementById("filterInput").addEventListener("input", function () {
+const filterInput = document.getElementById("filterInput");
+
+function filter(){
     const text = this.value.toLowerCase();
 
     displayedData = originalData.filter(item =>
-        item.title.toLowerCase().includes(text) ||
-        item.description.toLowerCase().includes(text)
+        item.title.toLowerCase().includes(text)
     );
 
     applySorting();
     renderTable();
-});
+}
+
+filterInput.addEventListener("input", filter);
 
 // Sortowanie
-document.getElementById("sortSelect").addEventListener("change", function () {
+const sortSelect = document.getElementById("sortSelect");
+
+sortSelect.addEventListener("change", function () {
     applySorting();
     renderTable();
 });
@@ -63,8 +68,7 @@ function applySorting() {
     const filterText = document.getElementById("filterInput").value.toLowerCase();
     if (filterText) {
         displayedData = displayedData.filter(item =>
-            item.title.toLowerCase().includes(filterText) ||
-            item.description.toLowerCase().includes(filterText)
+            item.title.toLowerCase().includes(filterText)
         );
     }
 }

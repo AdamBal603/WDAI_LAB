@@ -1,5 +1,6 @@
-document.getElementById("genBtn").addEventListener("click", function() {
-  
+const genBtn = document.getElementById("genBtn");
+
+function generate(){
     const minLen = parseInt(document.getElementById("minLen").value);
     const maxLen = parseInt(document.getElementById("maxLen").value);
     const includeUpper = document.getElementById("upperCase").checked;
@@ -23,4 +24,6 @@ document.getElementById("genBtn").addEventListener("click", function() {
     }
 
     alert("Wygenerowane hasło:\n" + password);
-});
+}
+
+genBtn.addEventListener("click", generate);
