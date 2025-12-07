@@ -95,7 +95,7 @@ function spawnPipe() {
     const screenHeight = window.innerHeight;
     const pipeHeight = 320;
 
-    const minTop = 90;
+    const minTop = 85;
     const maxTop = screenHeight - PIPE_GAP - pipeHeight + minTop;
 
     const gapTop = Math.max(minTop, Math.floor(Math.random() * (maxTop - minTop + 1)) + minTop);
@@ -184,7 +184,7 @@ document.addEventListener("keydown", (e) => {
 document.addEventListener("click", flap);
 
 function flap() {
-    if (isDead) return;
+    if (isDead || gameOver || isGameOver) return;
     wingSFX.currentTime = 0;
     wingSFX.play();
     velocity = jump;
