@@ -1,14 +1,18 @@
-const PIPE_GAP = 150;      // odstęp między rurą górną i dolną
-const PIPE_INTERVAL = 900; // odstęp czasowy między pojawianiem rur (ms)
-const PIPE_SPEED = 2;      // prędkość przesuwania rur
-const gameOverScreen = document.getElementById("gameOverScreen");
-const finalScoreEl = document.getElementById("finalScore");
-let isDead = false;    // ptak już uderzył w rurę
-let isGameOver = false; // ptak uderzył w ziemię
+// dźwięki
+const dieSFX = new Audio("assets/Sound Efects/die.wav");
+const hitSFX = new Audio("assets/Sound Efects/hit.wav");
+const pointSFX = new Audio("assets/Sound Efects/point.wav");
+const swooshSFX = new Audio("assets/Sound Efects/swoosh.wav");
+const wingSFX = new Audio("assets/Sound Efects/wing.wav");
 
 // punkty
 let score = 0;
 const scoreEl = document.getElementById("score");
+const finalScoreEl = document.getElementById("finalScore");
+const bestScoreEl = document.getElementById("bestScore");
+let bestScore = localStorage.getItem("bestScore") || 0;
+
+bestScoreEl.textContent = "Rekord: " + bestScore;
 
 function updateScore() {
     pipes.forEach(pipe => {
@@ -16,13 +20,65 @@ function updateScore() {
             pipe.passed = true;
             score++;
             scoreEl.textContent = score;
+            pointSFX.currentTime = 0;
+            pointSFX.play();
         }
     });
 }
 
+document.addEventListener("keydown", function(event) {
+    if(event.key === "r" || event.key === "R") {
+        localStorage.clear();
+        bestScore = 0;
+        alert("Rekord został zresetowany");
+    }
+});
 
+// koniec gry
+const gameOverScreen = document.getElementById("gameOverScreen");
+let isDead = false;
+let isGameOver = false;
+
+function hitPipe() {
+    if (isDead) return;
+
+    hitSFX.play();
+    dieSFX.play();
+    isDead = true;
+    gameRunning = false;
+    bird.style.transform = "rotate(90deg)";
+}
+
+function hitGround() {
+    if (isGameOver) return;
+
+    if (!isDead) hitSFX.play();
+
+    isGameOver = true;
+
+    setTimeout(() => {
+        swooshSFX.play();
+
+        finalScoreEl.textContent = score;
+
+        if (score > bestScore) {
+            bestScore = score;
+            localStorage.setItem("bestScore", bestScore);
+        }
+
+        bestScoreEl.textContent = bestScore;
+
+        gameOverScreen.classList.remove("hidden");
+
+    }, 300);
+
+}
 
 // generowanie rur
+const PIPE_GAP = 150;      // odstęp między rurą górną i dolną
+const PIPE_INTERVAL = 1200; // odstęp czasowy między pojawianiem rur (ms)
+const PIPE_SPEED = 2;      // prędkość przesuwania rur
+
 const pipesContainer = document.getElementById("pipes");
 let pipes = [];
 let gameRunning = false;
@@ -37,9 +93,9 @@ function spawnPipe() {
     if (!gameRunning) return;
 
     const screenHeight = window.innerHeight;
-    const pipeHeight = 320;   // wysokość graficzna rury
+    const pipeHeight = 320;
 
-    const minTop = 88;        // minimalna pozycja otworu
+    const minTop = 88.5;
     const maxTop = screenHeight - PIPE_GAP - pipeHeight + minTop;
 
     const gapTop = Math.max(minTop, Math.floor(Math.random() * (maxTop - minTop + 1)) + minTop);
@@ -64,10 +120,9 @@ function spawnPipe() {
     pipes.push({ topPipe, bottomPipe, x: window.innerWidth, passed: false });
 }
 
-
 // scrollowanie rur
 function updatePipes() {
-if (isDead) return;
+    if (isDead) return;
 
     for (let i = pipes.length - 1; i >= 0; i--) {
         const pipe = pipes[i];
@@ -88,7 +143,7 @@ if (isDead) return;
 // ptaszek
 const bird = document.getElementById("bird");
 
-let birdY = 200;
+let birdY = 300;
 let velocity = 0;
 let gravity = 0.1;
 let jump = -2;
@@ -116,6 +171,7 @@ function updateBird() {
     }
 
     if (birdY > 520) {
+        bird.style.transform = "rotate(90deg)";
         hitGround();
     }
 }
@@ -129,11 +185,13 @@ document.addEventListener("click", flap);
 
 function flap() {
     if (isDead) return;
+    wingSFX.currentTime = 0;
+    wingSFX.play();
     velocity = jump;
     gravityDelay = 20;
 }
 
-// kolizja z rurą
+// kolizja z rurą lub sufitem
 function checkCollision() {
     const birdRect = bird.getBoundingClientRect();
     const pipes = document.querySelectorAll(".pipe");
@@ -142,10 +200,11 @@ function checkCollision() {
         const pipeRect = pipe.getBoundingClientRect();
 
         if (
-            birdRect.left < pipeRect.right &&
+            (birdRect.left < pipeRect.right &&
             birdRect.right > pipeRect.left &&
             birdRect.top < pipeRect.bottom &&
-            birdRect.bottom > pipeRect.top
+            birdRect.bottom > pipeRect.top) ||
+            birdY < 0
         ) {
             hitPipe();
         }
@@ -195,21 +254,4 @@ function startGame() {
         startPipes();
         gameLoop();
     }
-}
-
-function hitPipe() {
-    if (isDead) return;
-
-    isDead = true;
-    gameRunning = false;
-    bird.style.transform = "rotate(90deg)";
-}
-
-function hitGround() {
-    if (isGameOver) return;
-
-    isGameOver = true;
-
-    finalScoreEl.textContent = score;
-    gameOverScreen.classList.remove("hidden");
 }
