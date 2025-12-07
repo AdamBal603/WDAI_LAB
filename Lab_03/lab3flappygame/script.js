@@ -95,7 +95,7 @@ function spawnPipe() {
     const screenHeight = window.innerHeight;
     const pipeHeight = 320;
 
-    const minTop = 88.5;
+    const minTop = 90;
     const maxTop = screenHeight - PIPE_GAP - pipeHeight + minTop;
 
     const gapTop = Math.max(minTop, Math.floor(Math.random() * (maxTop - minTop + 1)) + minTop);
