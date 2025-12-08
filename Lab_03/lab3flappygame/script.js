@@ -27,7 +27,7 @@ function updateScore() {
 }
 
 document.addEventListener("keydown", function(event) {
-    if(event.key === "r" || event.key === "R") {
+    if(event.key === "r") {
         localStorage.clear();
         bestScore = 0;
         alert("Rekord został zresetowany");
